@@ -1,0 +1,27 @@
+    - name: Ensure {{ ci }} is installed
+      apt: 
+        name: "{{ ci }}"
+        update_cache: yes
+        state: latest
+        
+
+    # - name: Restart {{ ci }}
+    #   service: 
+    #     name: "{{ ci }}"
+    #     enabled: true
+    #     state: restarted
+
+      notify: 
+       -  Restart {{ ci }}
+
+   
+    - name: Opening Port 
+      ufw:
+        rule: allow 
+        port: "8080"
+
+   
+    -  name: read admin pwd
+       shell: cat {{ jenkins_initial_pswd }}
+       register: adminpwd
+    -  debug: msg="{{ adminpwd.stdout_lines }}"

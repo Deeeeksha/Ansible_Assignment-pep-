@@ -1,0 +1,8 @@
+---
+  - hosts: webserver 
+    become: yes
+    remote_user: ubuntu
+    roles:
+      - jenkins
+
+

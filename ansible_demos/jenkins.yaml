@@ -1,0 +1,60 @@
+---
+- hosts: localhost
+  become: yes
+  
+  tasks:
+    - name: Installing the jenkins apt repository key 
+      apt_key: 
+        url: https://pkg.jenkins.io/debian-stable/jenkins.io.key 
+        state: present
+      become: yes
+
+    - name: The repository must be configured
+      apt_repository: 
+        repo: 'deb https://pkg.jenkins.io/debian-stable binary/' 
+        state: present
+      become: yes
+
+    - name: Update apt cache
+      apt: 
+        update_cache: yes
+        state: latest
+
+    # - name: Install Java
+    #   apt: 
+    #     name: openjdk-8-jdk
+    #     state: present
+    #    update_cache: yes
+
+    - name: Install Java using Ansible
+      become: yes
+      apt:
+        name: "{{ packages }}"
+        state: present
+      vars:
+        packages:
+           - openjdk-11-jdk
+        
+
+    - name: Ensure jenkins is installed
+      apt: 
+        name: jenkins 
+        update_cache: yes
+        state: latest
+      become: yes
+
+    - name: Restart jenkins 
+      service: 
+        name: jenkins 
+        enabled: true
+        state: restarted
+
+    - name: Opening Port 
+      ufw:
+        rule: allow 
+        port: "8080"
+
+    -  name: read admin pwd
+       shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+       register: adminpwd
+    -  debug: msg="{{ adminpwd.stdout_lines }}"

@@ -1,0 +1,9 @@
+- hosts: localhost
+  tasks:
+  - name: ansible create directory 
+    file:
+      path: /home/knoldus/Desktop/Deekuuuu
+      state: directory
+      owner: knoldus
+      group: knoldus
+      mode:  "0647"

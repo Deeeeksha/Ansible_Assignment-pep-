@@ -1,0 +1,8 @@
+---
+# handlers file for roles/jenkins
+
+    - name: Restart {{ ci }}
+      service: 
+        name: "{{ ci }}"
+        enabled: true
+        state: restarted

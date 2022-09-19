@@ -1,0 +1,5 @@
+---
+# defaults file for roles/jenkins
+
+jenkins_initial_pswd: /var/lib/jenkins/secrets/initialAdminPassword
+ci: jenkins

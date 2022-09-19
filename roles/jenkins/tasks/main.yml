@@ -1,0 +1,4 @@
+---
+ -  import_tasks: jenkins_apt.yaml
+ -  import_tasks: install_java.yaml
+ -  import_tasks: install_jenkins.yaml

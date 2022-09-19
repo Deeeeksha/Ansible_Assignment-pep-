@@ -1,0 +1,16 @@
+---
+- name: simple printing
+  hosts: localhost
+  tasks:
+    - name: Hello World!
+      debug:
+        msg: "Hello World!"
+
+    # - name: install apache
+    #   apt: 
+    #       name: apache
+    #       state: present
+    - name: cloning repo 
+      git:
+        repo: https://github.com/Deeeeksha/Jenkins-demo.git
+        dest: /home/knoldus/Documents/demo

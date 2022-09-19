@@ -1,0 +1,18 @@
+---
+# tasks file for roles/jenkins
+    - name: Installing the {{ ci }} apt repository key 
+      apt_key: 
+        url: https://pkg.{{ ci }}.io/debian-stable/{{ ci }}.io.key 
+        state: present
+        
+
+    - name: The repository must be configured
+      apt_repository: 
+        repo: 'deb https://pkg.{{ ci }}.io/debian-stable binary/' 
+        state: present
+        
+
+    - name: Update apt cache
+      apt: 
+        update_cache: yes
+        state: latest
