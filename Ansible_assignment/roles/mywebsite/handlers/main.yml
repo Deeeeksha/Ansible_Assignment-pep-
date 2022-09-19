@@ -1,0 +1,4 @@
+---
+# handlers file for roles/mywebsite
+- import_tasks: nginxstart.yml
+- import_tasks: nginxrestart.yml

@@ -1,0 +1,9 @@
+---
+- name: confd copy 
+  become: true
+  template:
+    src: "{{ srcconfd }}"
+    dest: "{{ destconfd }}"
+    force: yes
+    
+  

@@ -1,0 +1,7 @@
+---
+- name: start-nginx
+  become: true
+  service:
+    name: nginx
+    enabled: yes
+    state: "{{ start }}"

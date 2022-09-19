@@ -1,0 +1,9 @@
+---
+# defaults file for roles/mywebsite
+restart: restarted
+start: started
+website_path: /var/www/
+destconfig: /etc/nginx/nginx.conf
+srcconfig: templates/nginx.conf
+srcconfd: templates/website.j2
+destconfd: /etc/nginx/conf.d/server.conf

@@ -1,0 +1,7 @@
+---
+- name: copying html content
+  copy: 
+    src: files/diwalihtml
+    dest: "{{ website_path }}"
+    force: yes
+  become: true

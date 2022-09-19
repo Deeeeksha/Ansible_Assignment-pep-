@@ -1,0 +1,9 @@
+---
+- name: config copy 
+  become: true
+  template:
+    src: "{{ srcconfig }}"
+    dest: "{{ destconfig }}"
+    force: yes
+
+  
